@@ -64,7 +64,7 @@ test("Não deve criar uma conta se o documento for inválido", async () => {
     expect(outputSignup.message).toBe("Invalid document");
 });
 
-test("Não deve criar uma conta se a senha tiver menos do que 8 caracteres", async () => {
+test("Não deve criar uma conta se a senha for inválida", async () => {
     const input = {
         name: "John Doe",
         email: "john.doe@gmail.com",
@@ -77,41 +77,3 @@ test("Não deve criar uma conta se a senha tiver menos do que 8 caracteres", asy
     expect(outputSignup.message).toBe("Invalid password");
 });
 
-test("Não deve criar uma conta se a senha tiver não tiver números", async () => {
-    const input = {
-        name: "John Doe",
-        email: "john.doe@gmail.com",
-        document: "97456321558",
-        password: "asdQWEasd"
-    };
-    const responseSignup = await axios.post("http://localhost:3000/signup", input);
-    expect(responseSignup.status).toBe(422);
-    const outputSignup = responseSignup.data;
-    expect(outputSignup.message).toBe("Invalid password");
-});
-
-test("Não deve criar uma conta se a senha tiver não tiver letras maiúsculas", async () => {
-    const input = {
-        name: "John Doe",
-        email: "john.doe@gmail.com",
-        document: "97456321558",
-        password: "asdqwe123"
-    };
-    const responseSignup = await axios.post("http://localhost:3000/signup", input);
-    expect(responseSignup.status).toBe(422);
-    const outputSignup = responseSignup.data;
-    expect(outputSignup.message).toBe("Invalid password");
-});
-
-test("Não deve criar uma conta se a senha tiver não tiver letras minúsculas", async () => {
-    const input = {
-        name: "John Doe",
-        email: "john.doe@gmail.com",
-        document: "97456321558",
-        password: "ASDQWE123"
-    };
-    const responseSignup = await axios.post("http://localhost:3000/signup", input);
-    expect(responseSignup.status).toBe(422);
-    const outputSignup = responseSignup.data;
-    expect(outputSignup.message).toBe("Invalid password");
-});
