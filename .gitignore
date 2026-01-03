@@ -1,3 +1,8 @@
 .nyc_output
 coverage
 node_modules
+backend/node_modules
+backend/coverage
+.DS_Store
+.vscode
+.env
