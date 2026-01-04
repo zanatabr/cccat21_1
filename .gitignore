@@ -3,6 +3,8 @@ coverage
 node_modules
 backend/node_modules
 backend/coverage
+frontend/node_modules
+frontend/coverage
 .DS_Store
 .vscode
 .env
