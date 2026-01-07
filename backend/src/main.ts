@@ -1,12 +1,14 @@
 import express, { Request, Response} from "express";
 import crypto from "crypto";
 import pgp from "pg-promise";
+import cors from "cors";
 import { validateCpf } from "./validateCpf";
 import { validatePassword } from "./validatePassword";
 import { validateEmail } from "./validateEmail";
 import { validateName } from "./validateName";
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const connection = pgp()("postgres://postgres:123456@db:5432/app");
 
